@@ -48,6 +48,7 @@ export default function Home() {
           <div className="mt-32 text-4xl font-bold   sm:text-5xl  text-boba">
             <Image
               src={cow}
+              alt="mascot"
               className="inline-block sm:w-28 w-16 mr-4 -ml-2 "
             />
 
@@ -121,7 +122,7 @@ export default function Home() {
           <div className="pb-32">
             <div className="text-xl mt-4 font-title">
               phew that was a <span className="italic">lot</span> of words, why
-              don't you have a{" "}
+              don&apos;t you have a{" "}
               <AlertDialog.Root>
                 <AlertDialog.Trigger asChild>
                   <a
@@ -191,10 +192,11 @@ export default function Home() {
           </p>
           <div className=" ">
             {day ? (
-              <Image src={DayBanner} className="w-screen " />
+              <Image src={DayBanner} alt={"day banner"} className="w-screen " />
             ) : (
               <Image
                 src={NightBanner}
+                alt={"night banner"}
                 className=" invert brightness-50 w-screen"
               />
             )}
