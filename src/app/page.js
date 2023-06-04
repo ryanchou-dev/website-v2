@@ -1,113 +1,206 @@
-import Image from 'next/image'
+"use client";
+import Image from "next/image";
+import { useState, useEffect } from "react";
+import DayBanner from "../../public/day.svg";
+import NightBanner from "../../public/night.svg";
+import cow from "../../public/moo.svg";
+import Link from "next/link";
+import { Typewriter } from "react-simple-typewriter";
+import * as AlertDialog from "@radix-ui/react-alert-dialog";
+import actions from "../../public/boba.json";
 
 export default function Home() {
+  const [price, setPrice] = useState(4);
+  const [temp, setTemp] = useState(0);
+  const [day, setDay] = useState(1);
+  const [debt, setDebt] = useState(0);
+
+  useEffect(() => {
+    async function getWeather() {
+      const res = await fetch(
+        "http://api.weatherapi.com/v1/current.json?" +
+          "key=" +
+          process.env.NEXT_PUBLIC_WEATHER +
+          "&q=SF",
+        {
+          method: "GET",
+          headers: {
+            "content-type": "application/json",
+          },
+        }
+      );
+
+      const data = await res.json();
+      setTemp(data.current.temp_f);
+      setDay(data.current.is_day);
+    }
+    getWeather();
+
+    const old =
+      localStorage.getItem("debt") == null ? 0 : localStorage.getItem("debt");
+    setDebt(old);
+  }, []);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
+    <>
+      <div className="flex justify-between min-h-screen flex-col">
+        <div>
+          <div className="mt-32 text-4xl font-bold   sm:text-5xl  text-boba">
             <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+              src={cow}
+              className="inline-block sm:w-28 w-16 mr-4 -ml-2 "
             />
-          </a>
+
+            <p className="inline-block">Ryan Chou.</p>
+            {/* <br /> */}
+            <div className="text-boba sm:ml-32 ml-20 -mt-2 sm:-mt-4 opacity-50 text-xl sm:text-2xl">
+              a{" "}
+              <Typewriter
+                words={[
+                  "competitive programmer",
+                  "web designer",
+                  "cow enthusiast",
+                  "boba addict",
+                  "problem solver",
+                ]}
+                typeSpeed={200}
+                delaySpeed={2000}
+                cursor={true}
+                cursorBlinking={false}
+              />
+            </div>
+          </div>
+
+          <div
+            className="text-xl mt-12
+	  "
+          >
+            heyoo, im ryan, a{" "}
+            <span className="text-[#174351] font-bold">
+              competitive programmer{" "}
+            </span>
+            and <span className="text-[#327b31] font-bold">web developer</span>!
+            if you&apos;ve talked to me online, you probably know me by the
+            handle{" "}
+            <span className="text-[#7b7758] font-bold font-mono">
+              `(not)cryan(88)`
+            </span>
+            .
+            <br />
+            <br />
+            welcome to my boba shop :3
+          </div>
+          <div className="text-xl mt-4 ">
+            for fun, i like{" "}
+            <div className="group inline">
+              <Link
+                href={"/posts/boba-review"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-2 hover:bg-gray-300 rounded-lg p-0.5 transition  hover:bg-opacity-50  decoration-gray-400"
+              >
+                drinking boba
+              </Link>{" "}
+              <p className="group-hover:animate-bounce w-fit inline-block">
+                🧋{" "}
+              </p>
+              ,{" "}
+            </div>
+            <a
+              href="https://open.spotify.com/user/emdaporqzr54wnhmstyorqus1?si=a10bc34a87ff4a8c"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline decoration-2 hover:bg-gray-300 rounded-lg p-0.5 transition  hover:bg-opacity-50  decoration-gray-400"
+            >
+              listening to music
+            </a>
+            , and coding up whatever&apos;s on my mind. you can learn more about
+            me through my spontaneous and messy blog posts :D
+          </div>
+          <p className="text-4xl text-gray-600/40">~</p>
+          <div className="pb-32">
+            <div className="text-xl mt-4 font-title">
+              phew that was a <span className="italic">lot</span> of words, why
+              don't you have a{" "}
+              <AlertDialog.Root>
+                <AlertDialog.Trigger asChild>
+                  <a
+                    onClick={() => {
+                      const pp = Math.floor(Math.random() * (8 - 4 + 1)) + 4;
+                      setPrice(pp);
+                      localStorage.setItem(
+                        "debt",
+                        JSON.stringify(
+                          (localStorage.getItem("debt") == null
+                            ? 0
+                            : JSON.parse(localStorage.getItem("debt"))) + pp
+                        )
+                      );
+                      setDebt(JSON.parse(localStorage.getItem("debt")));
+                    }}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline inline decoration-2 hover:bg-gray-300 rounded-lg p-0.5 transition  hover:bg-opacity-50  decoration-gray-400"
+                  >
+                    nice, refreshing boba drink
+                  </a>
+                </AlertDialog.Trigger>
+                <AlertDialog.Portal>
+                  <AlertDialog.Overlay className="AlertDialogOverlay" />
+                  <AlertDialog.Content className="AlertDialogContent">
+                    <AlertDialog.Title className="AlertDialogTitle">
+                      {
+                        actions.title[
+                          Math.floor(Math.random() * actions.title.length)
+                        ]
+                      }
+                    </AlertDialog.Title>
+                    <AlertDialog.Description className="AlertDialogDescription">
+                      {
+                        actions.drink[
+                          Math.floor(Math.random() * actions.drink.length)
+                        ]
+                      }{" "}
+                      it cost you {price} dollars.
+                    </AlertDialog.Description>
+                    <div
+                      style={{
+                        display: "flex",
+                        gap: 25,
+                        justifyContent: "flex-end",
+                      }}
+                    >
+                      <AlertDialog.Action asChild>
+                        <button className="text-gray-400">close</button>
+                      </AlertDialog.Action>
+                    </div>
+                  </AlertDialog.Content>
+                </AlertDialog.Portal>
+              </AlertDialog.Root>
+              !
+            </div>
+            {debt > 0 && (
+              <div className="text-gray-400">you are ${debt} in debt.</div>
+            )}
+          </div>
+        </div>
+        <div className="static bottom-5">
+          <p className=" ml-2 italic text-sm text-gray-600">
+            it&apos;s {day ? "daytime" : "nighttime"} and {temp}&#176;
+            fahrenheit in san francisco
+          </p>
+          <div className=" ">
+            {day ? (
+              <Image src={DayBanner} className="w-screen " />
+            ) : (
+              <Image
+                src={NightBanner}
+                className=" invert brightness-50 w-screen"
+              />
+            )}
+          </div>
         </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    </>
+  );
 }
