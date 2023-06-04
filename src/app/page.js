@@ -19,7 +19,6 @@ export default function Home() {
     async function getWeather() {
       const res = await fetch("/api/weather");
       const data = await res.json();
-      console.log(data);
       setTemp(data.current.temp_f);
       setDay(data.current.is_day);
     }
