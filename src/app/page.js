@@ -84,8 +84,6 @@ export default function Home() {
             <div className="group inline">
               <Link
                 href={"/posts/boba-review"}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="underline decoration-2 hover:bg-gray-300 rounded-lg p-0.5 transition  hover:bg-opacity-50  decoration-gray-400"
               >
                 drinking boba
