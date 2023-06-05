@@ -47,7 +47,7 @@ export default function Home() {
               <Typewriter
                 words={[
                   "competitive programmer",
-                  "web designer",
+                  "web developer",
                   "cow enthusiast",
                   "boba addict",
                   "problem solver",

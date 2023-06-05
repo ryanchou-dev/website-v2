@@ -57,18 +57,27 @@ export default function Navbar() {
             </p>
           </Link>
         </motion.button>
-      </div>
-      <div className="flex flex-row space-x-4  justify-end">
-        {/* <motion.button
-          className="group justify-right items-right "
+        <motion.button
+          className="group ml-4 "
           whileTap={{ scale: 0.9 }}
           whileHover={{ scale: 1.1 }}
         >
-          <div className="bg-amber-800 bg-opacity-20 p-2 rounded-lg font-semibold ">
-            🧋 1
-          </div>
-        </motion.button> */}
-
+          <Link
+            href={"/projects"}
+            className={
+              (pathname == "/projects"
+                ? "bg-gradient-to-tr"
+                : "hover:bg-gradient-to-tr") +
+              "   p-4  hover:from-[#2473AB]/70 hover:via-[#1E528E]/70 hover:to-[#5B7983]/70 from-[#C3F0F5]/70 via-[#ffdf6b]/70  to-[#ffd5be]/70 rounded-lg "
+            }
+          >
+            <p className="group-hover:text-white  font-semibold inline-block  opacity-100 ">
+              projects
+            </p>
+          </Link>
+        </motion.button>
+      </div>
+      <div className="flex flex-row space-x-4  justify-end">
         <motion.button
           className="group justify-right items-right "
           whileTap={{ scale: 0.9 }}
