@@ -9,8 +9,8 @@ export default function Projects() {
         projects
       </p>
       <p className=" text-md text-gray-400  sm:text-lg mt-1">
-        while these projects aren't necessarily impressive, i had a really fun
-        time making them.
+        while these projects aren&apos;t necessarily impressive, i had a really
+        fun time making them.
       </p>
       <p className="text-4xl text-gray-600/40">~</p>
 
