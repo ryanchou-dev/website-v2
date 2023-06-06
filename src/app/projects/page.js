@@ -2,6 +2,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { projects } from "../../../public/projects";
 
+export const metadata = {
+  title: "ryan's projects",
+  description:
+    "while these projects aren't necessarily impressive, i had a really fun time making them.",
+};
+
 export default function Projects() {
   return (
     <div className="mt-32 pb-16">

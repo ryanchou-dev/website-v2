@@ -59,6 +59,13 @@ export const projects = [
     ],
   },
   {
+    title: "so... why does dijkstra's algorithm work?",
+    year: "2022",
+    imagePath: "/projects/some2.png",
+    description: "my first video-explainer video. it's not very good...",
+    links: [["youtube", "https://www.youtube.com/watch?v=yU6p7bpEKAE"]],
+  },
+  {
     title: "cow pattern generation",
     year: "2022",
     imagePath: "/projects/cowgen.png",

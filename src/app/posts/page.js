@@ -2,6 +2,12 @@ import Link from "next/link";
 import { compareDesc, format, parseISO } from "date-fns";
 import { allPosts, Post } from "contentlayer/generated";
 
+export const metadata = {
+  title: "ryan's blog posts",
+  description:
+    "a collection of fun things that i've done, and stuff i want to remember.",
+};
+
 function PostCard(post) {
   return (
     <div className="mb-8">

@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 
 export const metadata = {
   title: "ryan's website",
-  description: "welcome to my boba shop!",
+  description: "welcome to my corner of the internet!",
 };
 
 export default function RootLayout({ children }) {
