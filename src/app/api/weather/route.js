@@ -1,16 +1,10 @@
 import { NextResponse } from "next/server";
 export async function GET() {
   const res = await fetch(
-    "http://api.weatherapi.com/v1/current.json?" +
+    "https://api.weatherapi.com/v1/current.json?" +
       "key=" +
       process.env.NEXT_PUBLIC_WEATHER +
-      "&q=SF",
-    {
-      method: "GET",
-      headers: {
-        "content-type": "application/json",
-      },
-    }
+      "&q=SF"
   );
 
   const data = await res.json();
