@@ -4,9 +4,11 @@ export async function GET() {
     "https://api.weatherapi.com/v1/current.json?" +
       "key=" +
       process.env.NEXT_PUBLIC_WEATHER +
-      "&q=SF"
+      "&q=SF",
+    { cache: "no-store" }
   );
 
   const data = await res.json();
+  console.log(data);
   return new NextResponse(JSON.stringify(data));
 }

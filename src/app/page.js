@@ -17,7 +17,7 @@ export default function Home() {
 
   useEffect(() => {
     async function getWeather() {
-      const res = await fetch("/api/weather");
+      const res = await fetch("/api/weather", { cache: "no-store" });
       const data = await res.json();
       setTemp(data.current.temp_f);
       setDay(data.current.is_day);
