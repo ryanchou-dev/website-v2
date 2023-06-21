@@ -37,18 +37,17 @@ export default function Home() {
             <Image
               src={cow}
               alt="mascot"
-              className="inline-block sm:w-28 w-16 mr-4 -ml-2 "
+              className="hover:animate-spin inline-block sm:w-28 w-16 mr-4 -ml-2 "
             />
 
             <p className="inline-block">Ryan Chou.</p>
             {/* <br /> */}
-            <div className="text-boba sm:ml-32 ml-20 -mt-2 sm:-mt-4 opacity-50 text-xl sm:text-2xl">
+            <div className="text-gray-800 font-semibold sm:ml-[120px] ml-[73px] -mt-2 sm:-mt-4 opacity-50 text-xl sm:text-2xl">
               a{" "}
               <Typewriter
                 words={[
                   "competitive programmer",
                   "web developer",
-                  "cow enthusiast",
                   "boba addict",
                   "problem solver",
                 ]}
@@ -61,25 +60,20 @@ export default function Home() {
           </div>
 
           <div
-            className="text-xl mt-12
+            className="text-lg sm:text-xl mt-12
 	  "
           >
-            heyoo, im ryan, a{" "}
-            <span className="text-[#174351] font-bold">
-              competitive programmer{" "}
-            </span>
-            and <span className="text-[#327b31] font-bold">web developer</span>!
-            if you&apos;ve talked to me online, you probably know me by the
-            handle{" "}
-            <span className="text-[#7b7758] font-bold font-mono">
-              `(not)cryan(88)`
+            hi! im ryan, a high school student. i love competitive programming
+            and anything related to the web! you can find me practically
+            anywhere by the handle:{" "}
+            <span className=" font-semibold  rounded-sm">
+              <span className="text-gray-700">(not)</span>cryan
+              <span className="text-gray-700">(88)</span>
             </span>
             .
             <br />
-            <br />
-            welcome to my boba shop :3
           </div>
-          <div className="text-xl mt-4 ">
+          <div className="text-lg sm:text-xl mt-4 ">
             for fun, i like{" "}
             <div className="group inline">
               <Link
@@ -87,10 +81,7 @@ export default function Home() {
                 className="underline decoration-2 hover:bg-gray-300 rounded-lg p-0.5 transition  hover:bg-opacity-50  decoration-gray-400"
               >
                 drinking boba
-              </Link>{" "}
-              <p className="group-hover:animate-bounce w-fit inline-block">
-                🧋{" "}
-              </p>
+              </Link>
               ,{" "}
             </div>
             <a
@@ -106,7 +97,7 @@ export default function Home() {
           </div>
           <p className="text-4xl text-gray-600/40">~</p>
           <div className="pb-32">
-            <div className="text-xl mt-4 font-title">
+            <div className="text-lg sm:text-xl mt-4 font-title">
               phew that was a <span className="italic">lot</span> of words, why
               don&apos;t you have a{" "}
               <AlertDialog.Root>
@@ -127,9 +118,9 @@ export default function Home() {
                     }}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline inline decoration-2 hover:bg-gray-300 rounded-lg p-0.5 transition  hover:bg-opacity-50  decoration-gray-400"
+                    className="underline inline cursor-pointer decoration-2 hover:bg-gray-300 rounded-lg p-0.5 transition  hover:bg-opacity-50  decoration-gray-400"
                   >
-                    nice, refreshing boba drink
+                    refreshing boba drink
                   </a>
                 </AlertDialog.Trigger>
                 <AlertDialog.Portal>

@@ -11,7 +11,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="flex border border-b-2 border-gray-200  items-center justify-between top-0 w-screen lg:px-48 xl:px-72 sm:px-12 px-4 pt-6 pb-6  h-fit   backdrop-blur-lg backdrop-saturate-50 backdrop-filter fixed z-10 ">
+    <nav className="flex border border-b-2 border-gray-200  items-center justify-between top-0 w-screen lg:px-48 xl:px-72 sm:px-12 px-1 pt-6 pb-6  h-fit   backdrop-blur-lg backdrop-saturate-50 backdrop-filter fixed z-10 ">
       <div className="flex space-x-4 justify-start flex-row">
         <motion.button
           className="group ml-4 "
