@@ -71,9 +71,34 @@ export default function Home() {
               <span className="text-gray-700">(88)</span>
             </span>
             .
+          </div>
+          <div
+            className="text-lg sm:text-xl mt-4
+	  "
+          >
+            i'm a content manager at the{" "}
+            <a
+              href="https://joincpi.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline decoration-purple-700 decoration-2 hover:bg-purple-300 rounded-lg p-0.5 transition text-purple-700 hover:bg-opacity-30 "
+            >
+              Competitive Programming Initiative
+            </a>
+            , where i develop resources to promote competitive programming like
+            the{" "}
+            <a
+              href="https://usaco.guide"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline decoration-2 hover:bg-gray-300 rounded-lg p-0.5 transition  hover:bg-opacity-50  decoration-gray-400"
+            >
+              USACO Guide
+            </a>
+            !
             <br />
           </div>
-          <div className="text-lg sm:text-xl mt-4 ">
+          <div className="text-lg sm:text-xl mt-12 ">
             for fun, i like{" "}
             <div className="group inline">
               <Link
