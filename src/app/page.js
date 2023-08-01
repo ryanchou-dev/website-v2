@@ -76,7 +76,7 @@ export default function Home() {
             className="text-lg sm:text-xl mt-4
 	  "
           >
-            i'm a content manager at the{" "}
+            i&apos;m a content manager at the{" "}
             <a
               href="https://joincpi.org"
               target="_blank"
