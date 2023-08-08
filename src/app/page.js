@@ -68,7 +68,6 @@ export default function Home() {
             anywhere by the handle:{" "}
             <span className=" font-semibold  rounded-sm">
               <span className="text-gray-700">(not)</span>cryan
-              <span className="text-gray-700">(88)</span>
             </span>
             .
           </div>
